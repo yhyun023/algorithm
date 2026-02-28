@@ -3,21 +3,18 @@ from collections import deque
 def solution(maps):
     n = len(maps)
     m = len(maps[0])
-    
     dist = [[0]*m for _ in range(n)]
     dist[0][0] = 1
     
-    dr = [-1, 1, 0, 0]
-    dc = [0, 0, -1, 1]
-    
     q = deque()
     q.append((0, 0))
+    dr = [-1, 1, 0, 0]
+    dc = [0, 0, -1, 1]
     
     while q:
         r, c = q.popleft()
         if r == n - 1 and c == m - 1:
             return dist[r][c]
-        
         for k in range(4):
             nr = r + dr[k]
             nc = c + dc[k]
